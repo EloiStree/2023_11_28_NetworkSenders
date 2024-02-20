@@ -12,24 +12,29 @@ public class WebsocketClientSender : MonoBehaviour
     public string m_quickStringTest;
     public string m_startWith;
     public string m_endWith;
+    public bool m_isConnected;
 
     async void Start()
     {
+        Debug.Log("Humm");
         websocket = new WebSocket(m_websocketServer);
 
         websocket.OnOpen += () =>
         {
             Debug.Log("Connection open!");
+            m_isConnected = true;
         };
 
         websocket.OnError += (e) =>
         {
             Debug.Log("Error! " + e);
+            m_isConnected = false;
         };
 
         websocket.OnClose += (e) =>
         {
             Debug.Log("Connection closed!");
+            m_isConnected = false;
         };
 
         websocket.OnMessage += (bytes) =>
@@ -51,9 +56,10 @@ public class WebsocketClientSender : MonoBehaviour
 
     void Update()
     {
-#if !UNITY_WEBGL || UNITY_EDITOR
-        websocket.DispatchMessageQueue();
-#endif
+        #if !UNITY_WEBGL || UNITY_EDITOR
+        if(websocket!=null)
+                websocket.DispatchMessageQueue();
+        #endif
     }
 
 
@@ -65,9 +71,10 @@ public class WebsocketClientSender : MonoBehaviour
 
     [ContextMenu("Send Now")]
     public void SendNow() { SendWebSocketMessage(DateTime.Now.ToString()); }
-
+    public void SendToWebsocket(string text) { SendWebSocketMessage(text); }
     async void SendWebSocketMessage()
     {
+        if (websocket == null) return;
         if (websocket.State == WebSocketState.Open)
         {
             // Sending bytes
@@ -79,6 +86,7 @@ public class WebsocketClientSender : MonoBehaviour
     }
     async void SendWebSocketMessage(string message)
     {
+        if (websocket == null) return;
         if (websocket.State == WebSocketState.Open)
         {
             await websocket.SendText(m_startWith+message+m_endWith);
@@ -86,6 +94,7 @@ public class WebsocketClientSender : MonoBehaviour
     }
     async void SendWebSocketMessage(byte[] bytes)
     {
+        if (websocket == null) return;
         if (websocket.State == WebSocketState.Open)
         {
             await websocket.Send(bytes);

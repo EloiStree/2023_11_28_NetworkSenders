@@ -15,7 +15,7 @@ public class UdpSender : MonoBehaviour
     public string m_endWith;
 
 
-    void Start()
+    void Awake()
     {
         udpClient = new UdpClient();
         SendStringUTF8("Hello, UDP!");
