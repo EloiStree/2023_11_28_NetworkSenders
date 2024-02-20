@@ -1,0 +1,23 @@
+
+{                                                                                
+  "name": "be.eloistree.networksenders",                              
+  "displayName": "Network Senders",                        
+  "version": "0.0.1",                         
+  "unity": "2018.1",                             
+  "unityRelease": "",                             
+  "description": "Allows to send UDP and Websocket messages.",                         
+  "keywords": ["Script","Tool"],                       
+  "dependencies":{},     
+  "relatedPackages":{},     
+  "samples" : [],     
+  "author" : {
+"name":"",
+"mail":"",
+"url":""},     
+  "repository":{
+"type":"Git",
+"url":"https://github.com/EloiStree/2023_11_28_NetworkSenders.git",
+"footprint":"",
+"revision":""},     
+  "category": "Script"                   
+} 
