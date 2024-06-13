@@ -16,9 +16,8 @@ public class UdpSenderRawByteArray : MonoBehaviour
     IPEndPoint groupEP;
     void Awake()
     {
-        m_udpClient = new UdpClient(m_port) { EnableBroadcast = true }; // set EnableBroadcast property to true
-                                                                              //IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
-       groupEP = new IPEndPoint(IPAddress.Parse(m_ipAddress), m_port); // Should it be 192.168.255.255???
+        m_udpClient = new UdpClient();                                 
+        groupEP = new IPEndPoint(IPAddress.Parse(m_ipAddress), m_port); 
 
     }
 
