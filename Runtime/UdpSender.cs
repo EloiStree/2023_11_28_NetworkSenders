@@ -30,6 +30,21 @@ public class UdpSender : MonoBehaviour
     [ContextMenu("Date")]
     public void SendStringUTF8_Date() => SendStringUTF8(DateTime.Now.ToString());
 
+
+    
+    public void SendRawByteArray(byte [] whatToSendAsBytes)
+    {
+        try
+        {
+            udpClient.Send(whatToSendAsBytes, whatToSendAsBytes.Length, ipAddress, port);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error sending UDP message: {e.Message}");
+        }
+    }
+
+
     public void SendStringUTF8(string message)
     {
         try
