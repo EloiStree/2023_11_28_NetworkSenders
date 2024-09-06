@@ -1,5 +1,5 @@
 {
-    "name": "be.eloistree.networksenders",
+    "name": "be.elab.networksenders",
     "rootNamespace": "",
     "references": [
         "endel.nativewebsocket"

@@ -1,7 +1,7 @@
 
 {                                                                   
-            "name": "be.eloistree.networksendersEditor",          
-    "references": ["be.eloistree.networksenders"
+            "name": "be.elab.networksendersEditor",          
+    "references": ["be.elab.networksenders"
 ],                                                              
     "optionalUnityReferences": [],                                  
     "includePlatforms": [                                           
